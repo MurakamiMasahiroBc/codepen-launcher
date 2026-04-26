@@ -11,7 +11,6 @@
       --mg-gray:    #3A3E40;
       --lt-gray:    #96A0A6;
       --sunset:     #FF7669;
-      --lt-pink:    #FFAAB3;
       --bg:         #F4F7FA;
       --surface:    #FFFFFF;
       --border:     #D6E4F0;
@@ -27,37 +26,22 @@
       --mono:       'Cascadia Code','Fira Code','Consolas',monospace;
     }
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-    body {
-      font-family: var(--font);
-      background: var(--bg);
-      color: var(--text);
-      min-height: 100vh;
-    }
+    body { font-family: var(--font); background: var(--bg); color: var(--text); min-height: 100vh; }
 
     /* ══ AUTH OVERLAY ══ */
     #auth-overlay {
-      position: fixed; inset: 0;
-      background: var(--bg);
-      display: flex; align-items: center; justify-content: center;
-      z-index: 100; padding: 24px;
+      position: fixed; inset: 0; background: var(--bg);
+      display: flex; align-items: center; justify-content: center; z-index: 100; padding: 24px;
     }
     .auth-box {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      box-shadow: 0 4px 32px rgba(9,111,202,.12);
-      padding: 40px 36px;
-      width: 100%; max-width: 360px;
-      text-align: center;
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: var(--radius); box-shadow: 0 4px 32px rgba(9,111,202,.12);
+      padding: 40px 36px; width: 100%; max-width: 360px; text-align: center;
     }
     .auth-logo {
-      width: 52px; height: 52px;
-      background: var(--sf-blue);
-      border-radius: 14px;
+      width: 52px; height: 52px; background: var(--sf-blue); border-radius: 14px;
       display: flex; align-items: center; justify-content: center;
-      margin: 0 auto 18px;
-      box-shadow: 0 4px 14px rgba(9,111,202,.28);
+      margin: 0 auto 18px; box-shadow: 0 4px 14px rgba(9,111,202,.28);
     }
     .auth-box h1 { font-size: 1.2rem; font-weight: 700; color: var(--mg-gray); margin-bottom: 4px; }
     .auth-box h1 span { color: var(--sf-blue); }
@@ -65,24 +49,19 @@
     .auth-input-wrap { position: relative; margin-bottom: 10px; }
     .auth-input-wrap svg { position: absolute; left: 12px; top: 50%; transform: translateY(-50%); color: var(--lt-gray); pointer-events: none; }
     #pw-input {
-      width: 100%; padding: 11px 14px 11px 38px;
-      background: #F8FBFE; border: 1.5px solid var(--border);
-      border-radius: var(--radius-sm); color: var(--text);
-      font-size: .9rem; font-family: var(--font);
-      outline: none; transition: border-color .18s, box-shadow .18s;
-      letter-spacing: .08em;
+      width: 100%; padding: 11px 14px 11px 38px; background: #F8FBFE;
+      border: 1.5px solid var(--border); border-radius: var(--radius-sm);
+      color: var(--text); font-size: .9rem; font-family: var(--font);
+      outline: none; transition: border-color .18s, box-shadow .18s; letter-spacing: .08em;
     }
     #pw-input:focus { border-color: var(--sf-blue); box-shadow: 0 0 0 3px rgba(9,111,202,.1); }
     #pw-input.error { border-color: var(--sunset); box-shadow: 0 0 0 3px rgba(255,118,105,.12); }
     .pw-error { font-size: .75rem; color: var(--sunset); margin-bottom: 12px; min-height: 18px; text-align: left; }
     .pw-error.hidden { visibility: hidden; }
     .btn-auth {
-      width: 100%; padding: 11px;
-      background: var(--sunset); color: #fff;
-      font-size: .9rem; font-weight: 700;
-      border: none; border-radius: var(--radius-sm); cursor: pointer;
-      transition: filter .18s, box-shadow .18s;
-      box-shadow: 0 3px 12px rgba(255,118,105,.3);
+      width: 100%; padding: 11px; background: var(--sunset); color: #fff;
+      font-size: .9rem; font-weight: 700; border: none; border-radius: var(--radius-sm);
+      cursor: pointer; transition: filter .18s; box-shadow: 0 3px 12px rgba(255,118,105,.3);
       display: flex; align-items: center; justify-content: center; gap: 8px;
     }
     .btn-auth:hover { filter: brightness(1.06); }
@@ -97,121 +76,45 @@
     #app.visible { display: flex; }
 
     /* ── Header ── */
-    header { width: 100%; max-width: 720px; margin-bottom: 20px; display: flex; align-items: center; gap: 14px; }
+    header { width: 100%; max-width: 680px; margin-bottom: 20px; display: flex; align-items: center; gap: 14px; }
     .logo { width: 44px; height: 44px; flex-shrink: 0; background: var(--sf-blue); border-radius: 12px; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 12px rgba(9,111,202,.28); }
     .header-text h1 { font-size: 1.2rem; font-weight: 700; color: var(--mg-gray); line-height: 1.2; }
     .header-text h1 span { color: var(--sf-blue); }
     .header-text p { font-size: .75rem; color: var(--text-muted); margin-top: 2px; }
 
     /* ── Steps ── */
-    .steps {
-      width: 100%; max-width: 720px;
-      display: flex; align-items: center; gap: 6px;
-      margin-bottom: 18px;
-    }
+    .steps { width: 100%; max-width: 680px; display: flex; align-items: center; gap: 6px; margin-bottom: 18px; }
     .step {
-      flex: 1;
-      display: flex; flex-direction: column; align-items: center;
-      text-align: center;
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      padding: 18px 10px 14px;
-      gap: 8px;
-      box-shadow: var(--shadow);
+      flex: 1; display: flex; flex-direction: column; align-items: center; text-align: center;
+      background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius);
+      padding: 18px 10px 14px; gap: 8px; box-shadow: var(--shadow);
     }
-    .step-illo {
-      height: 72px;
-      display: flex; align-items: center; justify-content: center;
-    }
-    .step-num {
-      width: 22px; height: 22px;
-      background: var(--sf-blue); color: #fff;
-      border-radius: 50%;
-      font-size: .7rem; font-weight: 700;
-      display: flex; align-items: center; justify-content: center;
-      flex-shrink: 0;
-    }
+    .step-illo { height: 72px; display: flex; align-items: center; justify-content: center; }
+    .step-num { width: 22px; height: 22px; background: var(--sf-blue); color: #fff; border-radius: 50%; font-size: .7rem; font-weight: 700; display: flex; align-items: center; justify-content: center; }
     .step-title { font-size: .76rem; font-weight: 700; color: var(--mg-gray); line-height: 1.3; }
-    .step-desc  { font-size: .68rem; color: var(--text-muted); line-height: 1.5; }
-    .step-connector {
-      flex-shrink: 0; color: var(--lt-gray);
-      display: flex; align-items: center;
-    }
+    .step-desc { font-size: .68rem; color: var(--text-muted); line-height: 1.5; }
+    .step-connector { flex-shrink: 0; color: var(--lt-gray); display: flex; align-items: center; }
 
     /* ── Card ── */
-    .card { width: 100%; max-width: 720px; background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); box-shadow: var(--shadow); overflow: hidden; }
+    .card { width: 100%; max-width: 680px; background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); box-shadow: var(--shadow); overflow: hidden; }
 
-    /* ── Mode Toggle ── */
-    .mode-bar { display: flex; background: var(--bg); border-bottom: 1px solid var(--border); padding: 8px; gap: 6px; }
-    .mode-btn {
-      flex: 1; padding: 10px 8px;
-      background: transparent; border: 1.5px solid transparent;
-      border-radius: var(--radius-sm);
-      color: var(--text-muted); font-size: .82rem; font-weight: 600;
-      cursor: pointer; transition: all .18s;
-      display: flex; align-items: center; justify-content: center; gap: 7px;
-      position: relative;
-    }
-    .mode-btn.active {
-      background: var(--surface); color: var(--sf-blue);
-      border-color: var(--border);
-      box-shadow: 0 1px 6px rgba(9,111,202,.1);
-    }
-    .mode-btn:hover:not(.active) { background: rgba(9,111,202,.05); color: var(--mg-gray); }
-    .rec-badge {
-      font-size: .62rem; font-weight: 700;
-      background: var(--sunset); color: #fff;
-      padding: 2px 6px; border-radius: 20px;
-      letter-spacing: .03em;
-    }
-
-    /* ── Panel ── */
-    .panel { display: none; }
-    .panel.active { display: block; }
-
-    /* ── Editor Block ── */
+    /* ── Editor ── */
     .editor-block { margin: 16px; border-radius: var(--radius-sm); overflow: hidden; border: 1px solid #2D3F55; box-shadow: 0 2px 12px rgba(0,0,0,.15); }
-
-    .editor-bar {
-      background: #273447;
-      padding: 8px 12px;
-      display: flex; align-items: center; gap: 8px;
-    }
+    .editor-bar { background: #273447; padding: 8px 12px; display: flex; align-items: center; gap: 8px; }
     .editor-dots { display: flex; gap: 5px; }
     .editor-dots span { width: 10px; height: 10px; border-radius: 50%; display: block; }
-    .dot-r { background: #FF5F57; }
-    .dot-y { background: #FFBD2E; }
-    .dot-g { background: #28CA41; }
-    .editor-lang {
-      margin-left: auto;
-      font-size: .68rem; font-weight: 700;
-      color: #64899A; letter-spacing: .08em; text-transform: uppercase;
-    }
-    .editor-hint {
-      font-size: .7rem; color: #5A7A90; margin-left: 4px;
-    }
-
+    .dot-r { background: #FF5F57; } .dot-y { background: #FFBD2E; } .dot-g { background: #28CA41; }
+    .editor-hint { font-size: .7rem; color: #5A7A90; margin-left: 4px; }
+    .editor-lang { margin-left: auto; font-size: .68rem; font-weight: 700; color: #64899A; letter-spacing: .08em; text-transform: uppercase; }
     textarea {
-      display: block; width: 100%;
-      background: var(--editor-bg);
-      border: none; outline: none;
-      color: var(--editor-text);
-      font-family: var(--mono);
-      font-size: .82rem; line-height: 1.7;
-      padding: 14px 16px;
-      resize: vertical; min-height: 220px;
+      display: block; width: 100%; background: var(--editor-bg); border: none; outline: none;
+      color: var(--editor-text); font-family: var(--mono); font-size: .82rem; line-height: 1.7;
+      padding: 14px 16px; resize: vertical; min-height: 280px;
     }
     textarea::placeholder { color: var(--editor-ph); }
-    #bulk-textarea { min-height: 240px; }
-    #html-ta, #css-ta, #js-ta { min-height: 180px; }
 
     /* ── Helper ── */
-    .helper-text {
-      font-size: .73rem; color: var(--text-muted);
-      margin: 0 16px 14px; line-height: 1.7;
-      display: flex; align-items: flex-start; gap: 6px;
-    }
+    .helper-text { font-size: .73rem; color: var(--text-muted); margin: 0 16px 14px; line-height: 1.7; display: flex; align-items: flex-start; gap: 6px; }
     .helper-text svg { flex-shrink: 0; margin-top: 1px; color: var(--lt-blue); }
     .helper-text code { background: #EBF4FF; color: var(--sf-blue); padding: 1px 5px; border-radius: 3px; font-size: .71rem; }
 
@@ -223,87 +126,56 @@
     .preview-val { color: var(--mg-gray); word-break: break-all; white-space: pre-wrap; max-height: 44px; overflow: hidden; line-height: 1.5; font-family: var(--mono); font-size: .72rem; }
     .preview-empty { color: var(--text-muted); font-family: var(--font); }
 
-    /* ── Individual tabs ── */
-    .tab-bar { display: flex; gap: 2px; padding: 14px 16px 0; border-bottom: 2px solid var(--border); margin-bottom: 0; }
-    .tab-btn { padding: 7px 18px; background: none; border: none; border-bottom: 2px solid transparent; margin-bottom: -2px; color: var(--text-muted); font-size: .8rem; font-weight: 600; cursor: pointer; transition: color .18s, border-color .18s; }
-    .tab-btn.active { color: var(--sf-blue); border-bottom-color: var(--sf-blue); }
-    .tab-btn:hover:not(.active) { color: var(--mg-gray); }
-    .tab-pane { display: none; }
-    .tab-pane.active { display: block; }
+    /* ── Slide Prompt ── */
+    .slide-prompt {
+      display: none; margin: 0 16px 14px;
+      background: linear-gradient(135deg, #EBF4FF 0%, #FFF0EE 100%);
+      border: 1.5px solid var(--lt-blue); border-radius: var(--radius-sm);
+      padding: 14px 16px; align-items: center; gap: 14px; flex-wrap: wrap;
+    }
+    .slide-prompt.visible { display: flex; }
+    .slide-prompt-body { flex: 1; min-width: 0; }
+    .slide-prompt-title { font-size: .8rem; font-weight: 700; color: var(--mg-gray); display: flex; align-items: center; gap: 6px; margin-bottom: 3px; }
+    .slide-prompt-title .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--sunset); flex-shrink: 0; }
+    .slide-prompt-desc { font-size: .72rem; color: var(--text-muted); line-height: 1.5; }
+    .btn-slide {
+      display: inline-flex; align-items: center; gap: 7px; padding: 9px 18px;
+      background: var(--sf-blue); color: #fff; font-size: .8rem; font-weight: 700;
+      border: none; border-radius: var(--radius-sm); cursor: pointer;
+      transition: filter .18s; box-shadow: 0 2px 10px rgba(9,111,202,.28);
+      white-space: nowrap; flex-shrink: 0;
+    }
+    .btn-slide:hover { filter: brightness(1.08); }
 
     /* ── Launch Bar ── */
-    .launch-wrap {
-      padding: 14px 16px 18px;
-      border-top: 1px solid var(--border);
-      display: flex; align-items: center; gap: 10px; flex-wrap: wrap;
-    }
+    .launch-wrap { padding: 14px 16px 18px; border-top: 1px solid var(--border); display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
     .btn-launch {
-      display: inline-flex; align-items: center; gap: 8px;
-      padding: 12px 28px;
-      background: var(--sunset); color: #fff;
-      font-size: .9rem; font-weight: 700;
+      display: inline-flex; align-items: center; gap: 8px; padding: 12px 32px;
+      background: var(--sunset); color: #fff; font-size: .92rem; font-weight: 700;
       border: none; border-radius: var(--radius-sm); cursor: pointer;
       transition: filter .18s, transform .1s, box-shadow .18s;
       box-shadow: 0 3px 14px rgba(255,118,105,.35);
-      letter-spacing: .01em;
     }
     .btn-launch:hover { filter: brightness(1.07); box-shadow: 0 5px 20px rgba(255,118,105,.42); }
     .btn-launch:active { transform: scale(.97); }
     .btn-clear { padding: 10px 16px; background: none; border: 1.5px solid var(--border); border-radius: var(--radius-sm); color: var(--text-muted); font-size: .8rem; font-weight: 600; cursor: pointer; transition: border-color .18s, color .18s; }
     .btn-clear:hover { border-color: var(--lt-gray); color: var(--mg-gray); }
-    .spacer { flex: 1; }
-    .badge-small { font-size: .67rem; color: var(--text-muted); background: var(--bg); border: 1px solid var(--border); border-radius: 20px; padding: 4px 10px; }
 
     #cp-form { display: none; }
     footer { margin-top: 20px; font-size: .7rem; color: var(--text-muted); text-align: center; }
 
-    /* ── Slide Prompt Strip ── */
-    .slide-prompt {
-      display: none;
-      margin: 0 16px 14px;
-      background: linear-gradient(135deg, #EBF4FF 0%, #FFF0EE 100%);
-      border: 1.5px solid var(--lt-blue);
-      border-radius: var(--radius-sm);
-      padding: 14px 16px;
-      align-items: center; gap: 14px;
-      flex-wrap: wrap;
-    }
-    .slide-prompt.visible { display: flex; }
-    .slide-prompt-illo { flex-shrink: 0; }
-    .slide-prompt-body { flex: 1; min-width: 0; }
-    .slide-prompt-title {
-      font-size: .8rem; font-weight: 700; color: var(--mg-gray);
-      display: flex; align-items: center; gap: 6px; margin-bottom: 3px;
-    }
-    .slide-prompt-title .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--sunset); flex-shrink: 0; }
-    .slide-prompt-desc { font-size: .72rem; color: var(--text-muted); line-height: 1.5; }
-    .btn-slide {
-      display: inline-flex; align-items: center; gap: 7px;
-      padding: 9px 18px;
-      background: var(--sf-blue); color: #fff;
-      font-size: .8rem; font-weight: 700;
-      border: none; border-radius: var(--radius-sm); cursor: pointer;
-      transition: filter .18s, box-shadow .18s;
-      box-shadow: 0 2px 10px rgba(9,111,202,.28);
-      white-space: nowrap; flex-shrink: 0;
-    }
-    .btn-slide:hover { filter: brightness(1.08); }
-    .btn-slide:active { transform: scale(.97); }
-
-    /* ── Responsive ── */
     @media (max-width: 600px) {
       .steps { flex-direction: column; gap: 4px; }
       .step-connector { transform: rotate(90deg); }
       #app { padding: 20px 12px 36px; }
       .launch-wrap { flex-direction: column; align-items: stretch; }
       .btn-launch, .btn-clear { text-align: center; justify-content: center; }
-      .spacer, .badge-small { display: none; }
     }
   </style>
 </head>
 <body>
 
-<!-- ══ AUTH OVERLAY ══ -->
+<!-- ══ AUTH ══ -->
 <div id="auth-overlay">
   <div class="auth-box">
     <div class="auth-logo">
@@ -329,7 +201,7 @@
   </div>
 </div>
 
-<!-- ══ MAIN APP ══ -->
+<!-- ══ APP ══ -->
 <div id="app">
 
   <header>
@@ -344,27 +216,20 @@
     </div>
   </header>
 
-  <!-- 使い方 3ステップ -->
+  <!-- 3ステップ -->
   <div class="steps">
-
-    <!-- Step 1 -->
     <div class="step">
       <div class="step-illo">
-        <svg width="80" height="72" viewBox="0 0 80 72" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <!-- Code file -->
+        <svg width="80" height="72" viewBox="0 0 80 72" fill="none">
           <rect x="6" y="6" width="38" height="48" rx="4" fill="#EBF4FF" stroke="#76B7ED" stroke-width="1.5"/>
-          <!-- Folded corner -->
           <path d="M32 6 L44 18 L32 18 Z" fill="#D6E4F0"/>
           <line x1="32" y1="6" x2="32" y2="18" stroke="#76B7ED" stroke-width="1.5"/>
           <line x1="32" y1="18" x2="44" y2="18" stroke="#76B7ED" stroke-width="1.5"/>
-          <!-- Code lines -->
           <rect x="12" y="24" width="16" height="2.5" rx="1.25" fill="#096FCA" opacity="0.55"/>
           <rect x="12" y="30" width="22" height="2.5" rx="1.25" fill="#096FCA" opacity="0.35"/>
           <rect x="12" y="36" width="12" height="2.5" rx="1.25" fill="#096FCA" opacity="0.45"/>
           <rect x="12" y="42" width="18" height="2.5" rx="1.25" fill="#096FCA" opacity="0.3"/>
-          <!-- Selection dashed border -->
           <rect x="10" y="22" width="26" height="26" rx="2" fill="#096FCA" fill-opacity="0.06" stroke="#096FCA" stroke-width="1" stroke-dasharray="3 2"/>
-          <!-- Copy badge -->
           <rect x="40" y="40" width="26" height="28" rx="5" fill="white" stroke="#D6E4F0" stroke-width="1.5"/>
           <rect x="44" y="34" width="26" height="28" rx="5" fill="#096FCA"/>
           <rect x="50" y="41" width="12" height="2" rx="1" fill="white" opacity="0.9"/>
@@ -374,71 +239,59 @@
       </div>
       <div class="step-num">1</div>
       <div class="step-title">コードをコピー</div>
-      <div class="step-desc">HTMLファイル全体を<br>Cmd+A → Cmd+C</div>
+      <div class="step-desc">Ctrl+A → Ctrl+C<br>で全選択してコピー</div>
     </div>
 
-    <!-- Arrow -->
     <div class="step-connector">
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
         <line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/>
       </svg>
     </div>
 
-    <!-- Step 2 -->
     <div class="step">
       <div class="step-illo">
-        <svg width="80" height="72" viewBox="0 0 80 72" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <!-- Arrow coming down -->
+        <svg width="80" height="72" viewBox="0 0 80 72" fill="none">
           <line x1="40" y1="4" x2="40" y2="16" stroke="#096FCA" stroke-width="2" stroke-linecap="round"/>
           <polyline points="34,11 40,17 46,11" stroke="#096FCA" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-          <!-- Editor window -->
           <rect x="4" y="20" width="72" height="48" rx="6" fill="#1E293B"/>
-          <!-- Editor titlebar -->
           <rect x="4" y="20" width="72" height="16" rx="6" fill="#273447"/>
           <rect x="4" y="29" width="72" height="7" fill="#273447"/>
-          <!-- Window dots -->
           <circle cx="15" cy="28" r="3.5" fill="#FF5F57"/>
           <circle cx="25" cy="28" r="3.5" fill="#FFBD2E"/>
           <circle cx="35" cy="28" r="3.5" fill="#28CA41"/>
-          <!-- Code lines -->
           <rect x="12" y="42" width="22" height="2.5" rx="1.25" fill="#76B7ED" opacity="0.8"/>
           <rect x="12" y="49" width="32" height="2.5" rx="1.25" fill="#E2E8F0" opacity="0.4"/>
           <rect x="12" y="56" width="18" height="2.5" rx="1.25" fill="#E2E8F0" opacity="0.3"/>
-          <!-- Cursor blink -->
           <rect x="36" y="40" width="2" height="12" rx="1" fill="#FF7669" opacity="0.9"/>
+          <!-- Ctrl+V key hint -->
+          <rect x="50" y="42" width="22" height="14" rx="3" fill="#096FCA" opacity="0.25"/>
+          <text x="61" y="52" font-size="7" fill="#76B7ED" text-anchor="middle" font-family="monospace">Ctrl+V</text>
         </svg>
       </div>
       <div class="step-num">2</div>
       <div class="step-title">下に貼り付け</div>
-      <div class="step-desc">エディターに<br>Cmd+V で貼り付け</div>
+      <div class="step-desc">エディターに<br>Ctrl+V で貼り付け</div>
     </div>
 
-    <!-- Arrow -->
     <div class="step-connector">
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
         <line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/>
       </svg>
     </div>
 
-    <!-- Step 3 -->
     <div class="step">
       <div class="step-illo">
-        <svg width="80" height="72" viewBox="0 0 80 72" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <!-- Browser window -->
+        <svg width="80" height="72" viewBox="0 0 80 72" fill="none">
           <rect x="4" y="12" width="62" height="52" rx="6" fill="white" stroke="#D6E4F0" stroke-width="1.5"/>
           <rect x="4" y="12" width="62" height="18" rx="6" fill="#F4F7FA" stroke="#D6E4F0" stroke-width="1.5"/>
           <rect x="4" y="22" width="62" height="8" fill="#F4F7FA"/>
-          <!-- Browser dots -->
           <circle cx="14" cy="21" r="3" fill="#FF5F57"/>
           <circle cx="23" cy="21" r="3" fill="#FFBD2E"/>
           <circle cx="32" cy="21" r="3" fill="#28CA41"/>
-          <!-- URL bar -->
           <rect x="40" y="15" width="20" height="10" rx="3" fill="white" stroke="#D6E4F0" stroke-width="1"/>
-          <!-- Play button in browser -->
           <circle cx="35" cy="47" r="14" fill="#FF7669" fill-opacity="0.12"/>
           <circle cx="35" cy="47" r="10" fill="#FF7669"/>
           <polygon points="32,43 32,51 41,47" fill="white"/>
-          <!-- External link badge -->
           <rect x="58" y="6" width="18" height="18" rx="5" fill="#096FCA"/>
           <polyline points="62,18 62,11 69,11" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
           <line x1="68" y1="12" x2="62" y2="18" stroke="white" stroke-width="1.8" stroke-linecap="round"/>
@@ -448,36 +301,18 @@
       <div class="step-title">ボタンをクリック</div>
       <div class="step-desc">CodePen が<br>新しいタブで開く</div>
     </div>
-
   </div>
 
+  <!-- Card -->
   <div class="card">
-
-    <!-- Mode Toggle -->
-    <div class="mode-bar">
-      <button class="mode-btn active" data-mode="bulk" onclick="switchMode('bulk')">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
-        まとめて貼り付け
-        <span class="rec-badge">おすすめ</span>
-      </button>
-      <button class="mode-btn" data-mode="individual" onclick="switchMode('individual')">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
-        HTML / CSS / JS 個別
-      </button>
-    </div>
-
-    <!-- ══ BULK PANEL ══ -->
-    <div id="panel-bulk" class="panel active">
-      <div class="editor-block">
-        <div class="editor-bar">
-          <div class="editor-dots">
-            <span class="dot-r"></span><span class="dot-y"></span><span class="dot-g"></span>
-          </div>
-          <span class="editor-hint">HTMLファイル全体をここに貼り付け</span>
-          <span class="editor-lang">HTML</span>
-        </div>
-        <textarea id="bulk-textarea"
-          placeholder="<!DOCTYPE html>
+    <div class="editor-block">
+      <div class="editor-bar">
+        <div class="editor-dots"><span class="dot-r"></span><span class="dot-y"></span><span class="dot-g"></span></div>
+        <span class="editor-hint">HTMLファイル全体をここに貼り付け（Ctrl+V）</span>
+        <span class="editor-lang">HTML</span>
+      </div>
+      <textarea id="bulk-textarea"
+        placeholder="<!DOCTYPE html>
 <html>
 <head>
   <style>
@@ -489,108 +324,58 @@
   <script>console.log('hi')<\/script>
 </body>
 </html>"
-          oninput="parseBulk()"
-        ></textarea>
-      </div>
-
-      <div class="helper-text">
-        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
-        貼り付けると自動で分離します：<code>&lt;style&gt;</code> → CSS ／ <code>&lt;script&gt;</code> → JS ／ それ以外 → HTML
-      </div>
-
-      <div class="preview-strip" id="preview-strip">
-        <div class="preview-row"><span class="preview-label">HTML</span><span class="preview-val preview-empty" id="prev-html">—</span></div>
-        <div class="preview-row"><span class="preview-label">CSS</span><span class="preview-val preview-empty" id="prev-css">—</span></div>
-        <div class="preview-row"><span class="preview-label">JS</span><span class="preview-val preview-empty" id="prev-js">—</span></div>
-      </div>
-
-      <!-- ── Slide Prompt (AA検知時に表示) ── -->
-      <div class="slide-prompt" id="slide-prompt">
-        <!-- Mini slide illustration SVG -->
-        <div class="slide-prompt-illo">
-          <svg width="72" height="52" viewBox="0 0 72 52" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <!-- Slide frame 16:9 -->
-            <rect x="1" y="1" width="70" height="50" rx="5" fill="white" stroke="#D6E4F0" stroke-width="1.5"/>
-            <!-- Top accent bar -->
-            <rect x="1" y="1" width="70" height="4" rx="5" fill="#096FCA"/>
-            <rect x="1" y="3" width="70" height="2" fill="#096FCA"/>
-            <!-- Title area -->
-            <rect x="8" y="10" width="40" height="3.5" rx="1.75" fill="#3A3E40" opacity="0.7"/>
-            <line x1="8" y1="16" x2="64" y2="16" stroke="#D6E4F0" stroke-width="1"/>
-            <!-- Key message (sunset pink) -->
-            <rect x="8" y="19" width="32" height="3.5" rx="1.75" fill="#FF7669" opacity="0.8"/>
-            <!-- Content box -->
-            <rect x="8" y="26" width="56" height="16" rx="3" fill="#F0F7FF" stroke="#76B7ED" stroke-width="1"/>
-            <rect x="11" y="29" width="2.5" height="2.5" rx="1.25" fill="#76B7ED"/>
-            <rect x="16" y="29" width="20" height="2.5" rx="1.25" fill="#3A3E40" opacity="0.4"/>
-            <rect x="11" y="34" width="2.5" height="2.5" rx="1.25" fill="#76B7ED"/>
-            <rect x="16" y="34" width="28" height="2.5" rx="1.25" fill="#3A3E40" opacity="0.3"/>
-            <!-- Footer -->
-            <rect x="8" y="45" width="36" height="2" rx="1" fill="#96A0A6" opacity="0.5"/>
-            <!-- Page number -->
-            <rect x="56" y="45" width="10" height="2" rx="1" fill="#96A0A6" opacity="0.4"/>
-          </svg>
-        </div>
-        <div class="slide-prompt-body">
-          <div class="slide-prompt-title">
-            <span class="dot"></span>
-            スライドワイヤーが検出されました
-          </div>
-          <div class="slide-prompt-desc">このAAをスライド風HTMLに変換しますか？<br>問い・答え・理由・つなぎを自動で抽出してCodePenで開きます。</div>
-        </div>
-        <button class="btn-slide" onclick="slideToCodePen()">
-          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="9" y1="21" x2="9" y2="9"/></svg>
-          スライド化する
-        </button>
-      </div>
+        oninput="onInput()"
+      ></textarea>
     </div>
 
-    <!-- ══ INDIVIDUAL PANEL ══ -->
-    <div id="panel-individual" class="panel">
-      <div class="tab-bar">
-        <button class="tab-btn active" data-tab="html" onclick="switchTab('html')">HTML</button>
-        <button class="tab-btn"        data-tab="css"  onclick="switchTab('css')">CSS</button>
-        <button class="tab-btn"        data-tab="js"   onclick="switchTab('js')">JavaScript</button>
-      </div>
-      <div id="tab-html" class="tab-pane active">
-        <div class="editor-block" style="margin-top:14px">
-          <div class="editor-bar">
-            <div class="editor-dots"><span class="dot-r"></span><span class="dot-y"></span><span class="dot-g"></span></div>
-            <span class="editor-lang">HTML</span>
-          </div>
-          <textarea id="html-ta" placeholder="<h1>Hello, CodePen!</h1>"></textarea>
-        </div>
-      </div>
-      <div id="tab-css" class="tab-pane">
-        <div class="editor-block" style="margin-top:14px">
-          <div class="editor-bar">
-            <div class="editor-dots"><span class="dot-r"></span><span class="dot-y"></span><span class="dot-g"></span></div>
-            <span class="editor-lang">CSS</span>
-          </div>
-          <textarea id="css-ta" placeholder="body {&#10;  background: #f0f4ff;&#10;  font-family: system-ui, sans-serif;&#10;}"></textarea>
-        </div>
-      </div>
-      <div id="tab-js" class="tab-pane">
-        <div class="editor-block" style="margin-top:14px">
-          <div class="editor-bar">
-            <div class="editor-dots"><span class="dot-r"></span><span class="dot-y"></span><span class="dot-g"></span></div>
-            <span class="editor-lang">JavaScript</span>
-          </div>
-          <textarea id="js-ta" placeholder="console.log('Hello from JS');"></textarea>
-        </div>
-      </div>
-      <div style="height:14px"></div>
+    <div class="helper-text">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+      <code>&lt;style&gt;</code> → CSS ／ <code>&lt;script&gt;</code> → JS ／ それ以外の body → HTML に自動分離して送信
     </div>
 
-    <!-- Launch Bar -->
+    <!-- Preview Strip -->
+    <div class="preview-strip" id="preview-strip">
+      <div class="preview-row"><span class="preview-label">HTML</span><span class="preview-val preview-empty" id="prev-html">—</span></div>
+      <div class="preview-row"><span class="preview-label">CSS</span><span class="preview-val preview-empty" id="prev-css">—</span></div>
+      <div class="preview-row"><span class="preview-label">JS</span><span class="preview-val preview-empty" id="prev-js">—</span></div>
+    </div>
+
+    <!-- Slide Prompt -->
+    <div class="slide-prompt" id="slide-prompt">
+      <div class="slide-prompt-illo">
+        <svg width="72" height="52" viewBox="0 0 72 52" fill="none">
+          <rect x="1" y="1" width="70" height="50" rx="5" fill="white" stroke="#D6E4F0" stroke-width="1.5"/>
+          <rect x="1" y="1" width="70" height="4" rx="5" fill="#096FCA"/>
+          <rect x="1" y="3" width="70" height="2" fill="#096FCA"/>
+          <rect x="8" y="10" width="40" height="3.5" rx="1.75" fill="#3A3E40" opacity="0.7"/>
+          <line x1="8" y1="16" x2="64" y2="16" stroke="#D6E4F0" stroke-width="1"/>
+          <rect x="8" y="19" width="32" height="3.5" rx="1.75" fill="#FF7669" opacity="0.8"/>
+          <rect x="8" y="26" width="56" height="16" rx="3" fill="#F0F7FF" stroke="#76B7ED" stroke-width="1"/>
+          <rect x="11" y="29" width="2.5" height="2.5" rx="1.25" fill="#76B7ED"/>
+          <rect x="16" y="29" width="20" height="2.5" rx="1.25" fill="#3A3E40" opacity="0.4"/>
+          <rect x="11" y="34" width="2.5" height="2.5" rx="1.25" fill="#76B7ED"/>
+          <rect x="16" y="34" width="28" height="2.5" rx="1.25" fill="#3A3E40" opacity="0.3"/>
+          <rect x="8" y="45" width="36" height="2" rx="1" fill="#96A0A6" opacity="0.5"/>
+          <rect x="56" y="45" width="10" height="2" rx="1" fill="#96A0A6" opacity="0.4"/>
+        </svg>
+      </div>
+      <div class="slide-prompt-body">
+        <div class="slide-prompt-title"><span class="dot"></span>スライドワイヤーが検出されました</div>
+        <div class="slide-prompt-desc">このAAをスライド風HTMLに変換しますか？<br>問い・答え・理由・つなぎを自動抽出してCodePenで開きます。</div>
+      </div>
+      <button class="btn-slide" onclick="slideToCodePen()">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="9" y1="21" x2="9" y2="9"/></svg>
+        スライド化する
+      </button>
+    </div>
+
+    <!-- Launch -->
     <div class="launch-wrap">
       <button class="btn-launch" onclick="launch()">
         <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="5 3 19 12 5 21 5 3"/></svg>
         CodePen で開く
       </button>
       <button class="btn-clear" onclick="clearAll()">クリア</button>
-      <span class="spacer"></span>
-      <span class="badge-small">POST → codepen.io/pen/define</span>
     </div>
   </div>
 
@@ -607,29 +392,20 @@
 
   async function checkPassword(e) {
     e.preventDefault();
-    const btn   = document.getElementById('btn-auth');
+    const btn = document.getElementById('btn-auth');
     const input = document.getElementById('pw-input');
     const errEl = document.getElementById('pw-error');
-    const pw    = input.value.trim();
+    const pw = input.value.trim();
     if (!pw) return;
-
     btn.disabled = true; btn.classList.add('loading');
     errEl.classList.add('hidden'); input.classList.remove('error');
-
     try {
       const res = await fetch('/api/check', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        method: 'POST', headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ password: pw }),
       });
-      if (res.ok) {
-        try { sessionStorage.setItem(STORAGE_KEY, pw); } catch {}
-        showApp();
-      } else {
-        input.classList.add('error');
-        errEl.classList.remove('hidden');
-        input.value = ''; input.focus();
-      }
+      if (res.ok) { try { sessionStorage.setItem(STORAGE_KEY, pw); } catch {} showApp(); }
+      else { input.classList.add('error'); errEl.classList.remove('hidden'); input.value = ''; input.focus(); }
     } catch { showApp(); }
     finally { btn.disabled = false; btn.classList.remove('loading'); }
   }
@@ -640,253 +416,142 @@
   }
 
   (async () => {
-    let saved;
-    try { saved = sessionStorage.getItem(STORAGE_KEY); } catch {}
+    let saved; try { saved = sessionStorage.getItem(STORAGE_KEY); } catch {}
     if (!saved) return;
     try {
-      const res = await fetch('/api/check', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ password: saved }),
-      });
-      if (res.ok) showApp();
-      else { try { sessionStorage.removeItem(STORAGE_KEY); } catch {} }
+      const res = await fetch('/api/check', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ password: saved }) });
+      if (res.ok) showApp(); else { try { sessionStorage.removeItem(STORAGE_KEY); } catch {} }
     } catch { showApp(); }
   })();
 
-  /* ── MODE ── */
-  let mode = 'bulk';
+  /* ── MAIN ── */
   let parsed = { html: '', css: '', js: '' };
+  let aaData = null;
 
-  function switchMode(m) {
-    mode = m;
-    document.querySelectorAll('.mode-btn').forEach(b => b.classList.toggle('active', b.dataset.mode === m));
-    document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
-    document.getElementById('panel-' + m).classList.add('active');
-  }
-
-  function switchTab(t) {
-    document.querySelectorAll('.tab-btn').forEach(b => b.classList.toggle('active', b.dataset.tab === t));
-    document.querySelectorAll('.tab-pane').forEach(p => p.classList.remove('active'));
-    document.getElementById('tab-' + t).classList.add('active');
-  }
-
-  /* ── PARSE ── */
-  function parseBulk() {
+  function onInput() {
     const raw = document.getElementById('bulk-textarea').value;
-
-    // AA検知 → スライドプロンプト表示
+    parseCode(raw);
     const isAA = detectAA(raw);
-    const slidePrompt = document.getElementById('slide-prompt');
-    if (isAA) {
-      aaData = parseAASlide(raw);
-      slidePrompt.classList.toggle('visible', !!aaData);
-    } else {
-      aaData = null;
-      slidePrompt.classList.remove('visible');
-    }
+    if (isAA) { aaData = parseAASlide(raw); }
+    else { aaData = null; }
+    document.getElementById('slide-prompt').classList.toggle('visible', !!aaData);
+  }
 
+  function parseCode(raw) {
     let css = '', js = '', m;
     const styleRe = /<style[^>]*>([\s\S]*?)<\/style>/gi;
     while ((m = styleRe.exec(raw)) !== null) css += m[1] + '\n';
     const scriptRe = /<script(?![^>]*\bsrc\b)[^>]*>([\s\S]*?)<\/script>/gi;
     while ((m = scriptRe.exec(raw)) !== null) js += m[1] + '\n';
-    let stripped = raw
-      .replace(/<style[^>]*>[\s\S]*?<\/style>/gi, '')
-      .replace(/<script[^>]*>[\s\S]*?<\/script>/gi, '');
+    let stripped = raw.replace(/<style[^>]*>[\s\S]*?<\/style>/gi, '').replace(/<script[^>]*>[\s\S]*?<\/script>/gi, '');
     const bodyMatch = stripped.match(/<body[^>]*>([\s\S]*?)<\/body>/i);
     let html = bodyMatch ? bodyMatch[1].trim() : stripped
       .replace(/<!DOCTYPE[^>]*>/gi, '').replace(/<\/?html[^>]*>/gi, '')
       .replace(/<head[^>]*>[\s\S]*?<\/head>/gi, '').replace(/<\/?body[^>]*>/gi, '').trim();
     parsed = { html: html.trim(), css: css.trim(), js: js.trim() };
-    updatePreview();
-  }
-
-  function updatePreview() {
     const has = parsed.html || parsed.css || parsed.js;
     document.getElementById('preview-strip').classList.toggle('visible', !!has);
     ['html','css','js'].forEach(k => {
       const el = document.getElementById('prev-' + k);
       if (parsed[k]) { el.textContent = trunc(parsed[k]); el.classList.remove('preview-empty'); }
-      else           { el.textContent = '—'; el.classList.add('preview-empty'); }
+      else { el.textContent = '—'; el.classList.add('preview-empty'); }
     });
   }
 
-  /* ── AA DETECTION ── */
-  function detectAA(text) {
-    const boxChars = (text.match(/[┌┐└┘│─]/g) || []).length;
-    return boxChars >= 8;
-  }
+  function trunc(s, n = 100) { return (s = s.replace(/\n/g,' ').replace(/\s+/g,' ').trim()).length > n ? s.slice(0,n)+'…' : s; }
 
-  /* ── AA PARSER ── */
-  let aaData = null;
+  /* ── AA ── */
+  function detectAA(text) { return (text.match(/[┌┐└┘│─]/g) || []).length >= 8; }
 
   function parseAASlide(text) {
     const BOX = /[┌┐└┘─├┤┬┴┼]/g;
-    const lines = text.split('\n')
-      .map(l => l.replace(BOX, '').replace(/│/g, ' ').replace(/ \s*(.*?)\s* .*$/, '$1').trim())
-      .filter(l => l.length > 0 && !/^\s*$/.test(l));
-
-    // Simpler: strip ALL box drawing chars, get clean text lines
     const clean = text.split('\n').map(l => {
-      // Remove outer │ wrapper: get content between first and last │
       const parts = l.split('│');
       if (parts.length < 3) return null;
-      // Take the second segment (after first │)
-      const inner = parts.slice(1, -1).join('│');
-      return inner.replace(BOX, '').trim();
+      return parts.slice(1, -1).join('│').replace(BOX, '').trim();
     })
     .filter(l => l !== null && l.length > 0)
-    .filter(l => !/^─{2,}/.test(l))           // remove separator lines
-    .filter(l => !/^[┌└]/.test(l));             // remove inner box frames
-
+    .filter(l => !/^─{2,}/.test(l))
+    .filter(l => !/^[┌└]/.test(l));
     if (clean.length < 2) return null;
-
     const result = { title: '', answer: '', contentLines: [], source: '', footer: '', pageNum: '' };
-    let phase = 0; // 0=title, 1=answer, 2=content+footer
-
     for (const line of clean) {
-      // Inner box content lines (start with │ after outer strip)
       if (line.startsWith('│')) {
         const c = line.replace(/^│\s*/, '').replace(/\s*│$/, '').trim();
-        if (c) result.contentLines.push(c);
-        continue;
+        if (c) result.contentLines.push(c); continue;
       }
       if (line.startsWith('出所')) { result.source = line.replace(/^出所[:：]\s*/, ''); continue; }
-
       if (!result.title) {
         const pm = line.match(/Page\s*(\d+\/\d+)/);
         if (pm) result.pageNum = pm[1];
         result.title = line.replace(/\s*Page\s*\d+\/\d+\s*$/, '').trim();
-      } else if (!result.answer) {
-        result.answer = line;
-      } else {
-        // Last non-content line becomes footer
-        result.footer = line;
-      }
+      } else if (!result.answer) { result.answer = line; }
+      else { result.footer = line; }
     }
-
     return (result.title || result.answer) ? result : null;
   }
 
-  /* ── SLIDE HTML GENERATOR ── */
+  /* ── SLIDE HTML ── */
   function generateSlideHTML(d) {
-    const esc = s => (s || '').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
-    const contentItems = d.contentLines.map(l =>
-      `<div class="c-item"><span class="c-dot"></span><span>${esc(l)}</span></div>`
-    ).join('\n        ');
-
+    const esc = s => (s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+    const items = d.contentLines.map(l => `<div class="ci"><span class="cd"></span><span>${esc(l)}</span></div>`).join('\n        ');
     return `<!DOCTYPE html>
-<html lang="ja">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>${esc(d.title) || 'Slide'}</title>
+<html lang="ja"><head>
+<meta charset="UTF-8"><title>${esc(d.title)||'Slide'}</title>
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
 html,body{height:100%;background:#1E293B;display:flex;align-items:center;justify-content:center;font-family:'Hiragino Kaku Gothic Pro','Yu Gothic',Meiryo,system-ui,sans-serif}
-.slide{
-  width:960px;max-width:96vw;
-  aspect-ratio:16/9;
-  background:#fff;
-  position:relative;overflow:hidden;
-  display:grid;
-  grid-template-rows:auto auto 1fr auto auto;
-  box-shadow:0 12px 48px rgba(0,0,0,.45);
-  border-radius:6px;
-}
-/* Top accent */
+.slide{width:960px;max-width:96vw;aspect-ratio:16/9;background:#fff;position:relative;overflow:hidden;display:grid;grid-template-rows:auto auto 1fr auto auto;box-shadow:0 12px 48px rgba(0,0,0,.45);border-radius:6px}
 .slide::before{content:'';position:absolute;top:0;left:0;right:0;height:5px;background:linear-gradient(90deg,#096FCA,#76B7ED);z-index:2}
-/* Deco SVG */
-.deco{position:absolute;bottom:20px;right:24px;opacity:.08;pointer-events:none}
-/* Header */
-.s-head{padding:26px 44px 0;display:flex;justify-content:space-between;align-items:flex-end}
-.s-title{font-size:1.05rem;font-weight:700;color:#3A3E40;line-height:1.4;border-bottom:2px solid #D6E4F0;padding-bottom:10px;flex:1}
-.s-page{font-size:.72rem;color:#96A0A6;padding-left:16px;padding-bottom:12px;flex-shrink:0}
-/* Answer */
-.s-answer{padding:10px 44px;font-size:1.25rem;font-weight:800;color:#FF7669;line-height:1.35}
-/* Content */
-.s-content{
-  margin:0 44px;
-  background:#F0F7FF;border-radius:8px;
-  border-left:4px solid #76B7ED;
-  padding:14px 18px;
-  display:flex;flex-direction:column;justify-content:center;gap:9px;
-  overflow:hidden;
-}
-.c-item{display:flex;align-items:flex-start;gap:9px;font-size:.85rem;color:#3A3E40;line-height:1.55}
-.c-dot{width:7px;height:7px;border-radius:50%;background:#76B7ED;flex-shrink:0;margin-top:5px}
-/* Source */
-.s-source{padding:5px 44px 0;font-size:.62rem;color:#96A0A6}
-/* Footer */
-.s-footer{padding:9px 44px 14px;font-size:.7rem;color:#96A0A6;font-style:italic;border-top:1px solid #EBF4FF}
-</style>
-</head>
-<body>
+.deco{position:absolute;bottom:16px;right:20px;opacity:.07;pointer-events:none}
+.sh{padding:26px 44px 0;display:flex;justify-content:space-between;align-items:flex-end}
+.st{font-size:1.05rem;font-weight:700;color:#3A3E40;line-height:1.4;border-bottom:2px solid #D6E4F0;padding-bottom:10px;flex:1}
+.sp{font-size:.72rem;color:#96A0A6;padding-left:16px;padding-bottom:12px;flex-shrink:0}
+.sa{padding:10px 44px;font-size:1.25rem;font-weight:800;color:#FF7669;line-height:1.35}
+.sc{margin:0 44px;background:#F0F7FF;border-radius:8px;border-left:4px solid #76B7ED;padding:14px 18px;display:flex;flex-direction:column;justify-content:center;gap:9px;overflow:hidden}
+.ci{display:flex;align-items:flex-start;gap:9px;font-size:.85rem;color:#3A3E40;line-height:1.55}
+.cd{width:7px;height:7px;border-radius:50%;background:#76B7ED;flex-shrink:0;margin-top:5px}
+.ss{padding:5px 44px 0;font-size:.62rem;color:#96A0A6}
+.sf{padding:9px 44px 14px;font-size:.7rem;color:#96A0A6;font-style:italic;border-top:1px solid #EBF4FF}
+</style></head><body>
 <div class="slide">
-  <!-- Decorative SVG (mini slide icon) -->
-  <svg class="deco" width="140" height="100" viewBox="0 0 80 58" fill="none">
+  <svg class="deco" width="130" height="95" viewBox="0 0 80 58" fill="none">
     <rect x="1" y="1" width="78" height="56" rx="5" fill="#096FCA"/>
     <rect x="1" y="1" width="78" height="14" rx="5" fill="#1a5fa0"/>
     <rect x="1" y="8" width="78" height="7" fill="#1a5fa0"/>
-    <circle cx="12" cy="8" r="3" fill="#FF5F57"/>
-    <circle cx="21" cy="8" r="3" fill="#FFBD2E"/>
-    <circle cx="30" cy="8" r="3" fill="#28CA41"/>
+    <circle cx="12" cy="8" r="3" fill="#FF5F57"/><circle cx="21" cy="8" r="3" fill="#FFBD2E"/><circle cx="30" cy="8" r="3" fill="#28CA41"/>
     <circle cx="40" cy="38" r="12" fill="#FF7669"/>
     <polygon points="37,33 37,43 47,38" fill="white"/>
   </svg>
-
-  <div class="s-head">
-    <div class="s-title">${esc(d.title) || '（問い）'}</div>
-    <div class="s-page">${esc(d.pageNum) || '1 / 1'}</div>
-  </div>
-  <div class="s-answer">${esc(d.answer) || '（答え）'}</div>
-  <div class="s-content">
-    ${contentItems || '<div class="c-item"><span class="c-dot"></span><span>（理由・根拠）</span></div>'}
-  </div>
-  ${d.source ? `<div class="s-source">出所：${esc(d.source)}</div>` : '<div class="s-source"></div>'}
-  <div class="s-footer">${esc(d.footer) || ''}</div>
-</div>
-</body>
-</html>`;
+  <div class="sh"><div class="st">${esc(d.title)||'（問い）'}</div><div class="sp">${esc(d.pageNum)||'1 / 1'}</div></div>
+  <div class="sa">${esc(d.answer)||'（答え）'}</div>
+  <div class="sc">${items||'<div class="ci"><span class="cd"></span><span>（理由・根拠）</span></div>'}</div>
+  ${d.source?`<div class="ss">出所：${esc(d.source)}</div>`:'<div class="ss"></div>'}
+  <div class="sf">${esc(d.footer)||''}</div>
+</div></body></html>`;
   }
 
-  /* ── SLIDE → CODEPEN ── */
   function slideToCodePen() {
     if (!aaData) return;
-    const slideHTML = generateSlideHTML(aaData);
-    document.getElementById('cp-data').value = JSON.stringify({ html: slideHTML });
+    document.getElementById('cp-data').value = JSON.stringify({ html: generateSlideHTML(aaData) });
     document.getElementById('cp-form').submit();
-  }
-
-  function trunc(s, n = 100) {
-    s = s.replace(/\n/g, ' ').replace(/\s+/g, ' ').trim();
-    return s.length > n ? s.slice(0, n) + '…' : s;
   }
 
   /* ── LAUNCH ── */
   function launch() {
-    let payload;
-    if (mode === 'bulk') {
-      parseBulk();
-      payload = { ...parsed };
-    } else {
-      payload = {
-        html: document.getElementById('html-ta').value,
-        css:  document.getElementById('css-ta').value,
-        js:   document.getElementById('js-ta').value,
-      };
-    }
-    if (!payload.html && !payload.css && !payload.js) { alert('コードを入力してください。'); return; }
-    document.getElementById('cp-data').value = JSON.stringify(payload);
+    const raw = document.getElementById('bulk-textarea').value;
+    if (!raw.trim()) { alert('コードを入力してください。'); return; }
+    parseCode(raw);
+    if (!parsed.html && !parsed.css && !parsed.js) { alert('コードを入力してください。'); return; }
+    document.getElementById('cp-data').value = JSON.stringify(parsed);
     document.getElementById('cp-form').submit();
   }
 
-  /* ── CLEAR ── */
   function clearAll() {
-    ['bulk-textarea','html-ta','css-ta','js-ta'].forEach(id => document.getElementById(id).value = '');
-    parsed = { html: '', css: '', js: '' };
+    document.getElementById('bulk-textarea').value = '';
+    parsed = { html: '', css: '', js: '' }; aaData = null;
     document.getElementById('preview-strip').classList.remove('visible');
+    document.getElementById('slide-prompt').classList.remove('visible');
   }
 </script>
 </body>
