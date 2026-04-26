@@ -28,52 +28,9 @@
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     body { font-family: var(--font); background: var(--bg); color: var(--text); min-height: 100vh; }
 
-    /* ══ AUTH OVERLAY ══ */
-    #auth-overlay {
-      position: fixed; inset: 0; background: var(--bg);
-      display: flex; align-items: center; justify-content: center; z-index: 100; padding: 24px;
-    }
-    .auth-box {
-      background: var(--surface); border: 1px solid var(--border);
-      border-radius: var(--radius); box-shadow: 0 4px 32px rgba(9,111,202,.12);
-      padding: 40px 36px; width: 100%; max-width: 360px; text-align: center;
-    }
-    .auth-logo {
-      width: 52px; height: 52px; background: var(--sf-blue); border-radius: 14px;
-      display: flex; align-items: center; justify-content: center;
-      margin: 0 auto 18px; box-shadow: 0 4px 14px rgba(9,111,202,.28);
-    }
-    .auth-box h1 { font-size: 1.2rem; font-weight: 700; color: var(--mg-gray); margin-bottom: 4px; }
-    .auth-box h1 span { color: var(--sf-blue); }
-    .auth-box p { font-size: .8rem; color: var(--text-muted); margin-bottom: 24px; }
-    .auth-input-wrap { position: relative; margin-bottom: 10px; }
-    .auth-input-wrap svg { position: absolute; left: 12px; top: 50%; transform: translateY(-50%); color: var(--lt-gray); pointer-events: none; }
-    #pw-input {
-      width: 100%; padding: 11px 14px 11px 38px; background: #F8FBFE;
-      border: 1.5px solid var(--border); border-radius: var(--radius-sm);
-      color: var(--text); font-size: .9rem; font-family: var(--font);
-      outline: none; transition: border-color .18s, box-shadow .18s; letter-spacing: .08em;
-    }
-    #pw-input:focus { border-color: var(--sf-blue); box-shadow: 0 0 0 3px rgba(9,111,202,.1); }
-    #pw-input.error { border-color: var(--sunset); box-shadow: 0 0 0 3px rgba(255,118,105,.12); }
-    .pw-error { font-size: .75rem; color: var(--sunset); margin-bottom: 12px; min-height: 18px; text-align: left; }
-    .pw-error.hidden { visibility: hidden; }
-    .btn-auth {
-      width: 100%; padding: 11px; background: var(--sunset); color: #fff;
-      font-size: .9rem; font-weight: 700; border: none; border-radius: var(--radius-sm);
-      cursor: pointer; transition: filter .18s; box-shadow: 0 3px 12px rgba(255,118,105,.3);
-      display: flex; align-items: center; justify-content: center; gap: 8px;
-    }
-    .btn-auth:hover { filter: brightness(1.06); }
-    .btn-auth:disabled { opacity: .6; cursor: not-allowed; filter: none; }
-    .spinner { width: 16px; height: 16px; border: 2px solid rgba(255,255,255,.4); border-top-color: #fff; border-radius: 50%; animation: spin .6s linear infinite; display: none; }
-    .btn-auth.loading .spinner { display: block; }
-    .btn-auth.loading .btn-text { display: none; }
-    @keyframes spin { to { transform: rotate(360deg); } }
-
     /* ══ APP ══ */
-    #app { display: none; flex-direction: column; align-items: center; padding: 28px 16px 48px; min-height: 100vh; }
-    #app.visible { display: flex; }
+    #app { display: flex; flex-direction: column; align-items: center; padding: 28px 16px 48px; min-height: 100vh; }
+    #app.hidden { display: none; }
 
     /* ── Header ── */
     header { width: 100%; max-width: 680px; margin-bottom: 20px; display: flex; align-items: center; gap: 14px; }
@@ -150,56 +107,109 @@
     /* ── Launch Bar ── */
     .launch-wrap { padding: 14px 16px 18px; border-top: 1px solid var(--border); display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
     .btn-launch {
-      display: inline-flex; align-items: center; gap: 8px; padding: 12px 32px;
-      background: var(--sunset); color: #fff; font-size: .92rem; font-weight: 700;
+      display: inline-flex; align-items: center; gap: 8px; padding: 12px 28px;
+      background: var(--sunset); color: #fff; font-size: .9rem; font-weight: 700;
       border: none; border-radius: var(--radius-sm); cursor: pointer;
       transition: filter .18s, transform .1s, box-shadow .18s;
       box-shadow: 0 3px 14px rgba(255,118,105,.35);
     }
     .btn-launch:hover { filter: brightness(1.07); box-shadow: 0 5px 20px rgba(255,118,105,.42); }
     .btn-launch:active { transform: scale(.97); }
-    .btn-clear { padding: 10px 16px; background: none; border: 1.5px solid var(--border); border-radius: var(--radius-sm); color: var(--text-muted); font-size: .8rem; font-weight: 600; cursor: pointer; transition: border-color .18s, color .18s; }
+    .btn-share {
+      display: inline-flex; align-items: center; gap: 7px; padding: 11px 18px;
+      background: #fff; color: var(--sf-blue); font-size: .82rem; font-weight: 700;
+      border: 1.5px solid var(--sf-blue); border-radius: var(--radius-sm); cursor: pointer;
+      transition: background .18s, color .18s;
+    }
+    .btn-share:hover { background: var(--sf-blue); color: #fff; }
+    .btn-clear { padding: 10px 16px; background: none; border: 1.5px solid var(--border); border-radius: var(--radius-sm); color: var(--text-muted); font-size: .8rem; font-weight: 600; cursor: pointer; transition: border-color .18s, color .18s; margin-left: auto; }
     .btn-clear:hover { border-color: var(--lt-gray); color: var(--mg-gray); }
 
     #cp-form { display: none; }
     footer { margin-top: 20px; font-size: .7rem; color: var(--text-muted); text-align: center; }
+
+    /* ══ MODAL ══ */
+    .modal-overlay {
+      position: fixed; inset: 0; background: rgba(20,30,50,.55);
+      display: none; align-items: center; justify-content: center;
+      z-index: 100; padding: 20px;
+      animation: fadeIn .18s ease;
+    }
+    .modal-overlay.visible { display: flex; }
+    @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+    .modal {
+      background: var(--surface); border-radius: var(--radius);
+      box-shadow: 0 12px 48px rgba(0,0,0,.25);
+      width: 100%; max-width: 440px; padding: 28px 28px 24px;
+      animation: slideUp .22s ease;
+    }
+    @keyframes slideUp { from { transform: translateY(12px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+    .modal-icon {
+      width: 44px; height: 44px; background: linear-gradient(135deg, var(--sf-blue), var(--lt-blue));
+      border-radius: 12px; display: flex; align-items: center; justify-content: center;
+      margin-bottom: 14px; box-shadow: 0 4px 12px rgba(9,111,202,.25);
+    }
+    .modal h2 { font-size: 1.05rem; font-weight: 700; color: var(--mg-gray); margin-bottom: 6px; }
+    .modal p.modal-desc { font-size: .78rem; color: var(--text-muted); line-height: 1.55; margin-bottom: 18px; }
+    .modal label { display: block; font-size: .76rem; font-weight: 700; color: var(--mg-gray); margin-bottom: 6px; }
+    .modal label .opt { font-weight: 400; color: var(--text-muted); font-size: .72rem; margin-left: 4px; }
+    .modal input[type="password"], .modal input[type="text"] {
+      width: 100%; padding: 10px 12px; background: #F8FBFE;
+      border: 1.5px solid var(--border); border-radius: var(--radius-sm);
+      color: var(--text); font-size: .85rem; font-family: var(--font);
+      outline: none; transition: border-color .18s, box-shadow .18s;
+    }
+    .modal input:focus { border-color: var(--sf-blue); box-shadow: 0 0 0 3px rgba(9,111,202,.1); }
+    .modal input.error { border-color: var(--sunset); box-shadow: 0 0 0 3px rgba(255,118,105,.12); }
+    .modal-error { font-size: .72rem; color: var(--sunset); margin-top: 6px; min-height: 16px; }
+    .modal-error.hidden { visibility: hidden; }
+    .modal-actions { display: flex; gap: 8px; margin-top: 18px; }
+    .btn-modal-primary {
+      flex: 1; padding: 10px; background: var(--sf-blue); color: #fff;
+      font-size: .85rem; font-weight: 700; border: none; border-radius: var(--radius-sm);
+      cursor: pointer; transition: filter .18s;
+    }
+    .btn-modal-primary:hover { filter: brightness(1.08); }
+    .btn-modal-secondary {
+      padding: 10px 18px; background: none; color: var(--text-muted);
+      font-size: .82rem; font-weight: 600; border: 1.5px solid var(--border);
+      border-radius: var(--radius-sm); cursor: pointer; transition: border-color .18s, color .18s;
+    }
+    .btn-modal-secondary:hover { border-color: var(--lt-gray); color: var(--mg-gray); }
+
+    /* ── Share URL Display ── */
+    .share-url-wrap { display: none; margin-top: 14px; }
+    .share-url-wrap.visible { display: block; }
+    .share-url-box {
+      display: flex; gap: 8px; align-items: center;
+      background: #F0F7FF; border: 1.5px solid var(--lt-blue);
+      border-radius: var(--radius-sm); padding: 8px 8px 8px 12px;
+    }
+    .share-url-text {
+      flex: 1; font-family: var(--mono); font-size: .72rem;
+      color: var(--mg-gray); word-break: break-all;
+      max-height: 60px; overflow-y: auto; line-height: 1.5;
+    }
+    .btn-copy {
+      flex-shrink: 0; padding: 7px 12px; background: var(--sf-blue); color: #fff;
+      border: none; border-radius: var(--radius-sm); font-size: .72rem; font-weight: 700;
+      cursor: pointer; transition: filter .18s; align-self: flex-start;
+    }
+    .btn-copy:hover { filter: brightness(1.08); }
+    .btn-copy.copied { background: #1D9E75; }
+    .share-info { font-size: .7rem; color: var(--text-muted); margin-top: 6px; line-height: 1.5; }
+    .share-info svg { vertical-align: -2px; margin-right: 3px; color: var(--sf-blue); }
 
     @media (max-width: 600px) {
       .steps { flex-direction: column; gap: 4px; }
       .step-connector { transform: rotate(90deg); }
       #app { padding: 20px 12px 36px; }
       .launch-wrap { flex-direction: column; align-items: stretch; }
-      .btn-launch, .btn-clear { text-align: center; justify-content: center; }
+      .btn-launch, .btn-share, .btn-clear { text-align: center; justify-content: center; margin-left: 0; }
     }
   </style>
 </head>
 <body>
-
-<!-- ══ AUTH ══ -->
-<div id="auth-overlay">
-  <div class="auth-box">
-    <div class="auth-logo">
-      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-        <polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/>
-      </svg>
-    </div>
-    <h1>CodePen <span>Launcher</span></h1>
-    <p>パスワードを入力してください</p>
-    <form id="auth-form" onsubmit="checkPassword(event)">
-      <div class="auth-input-wrap">
-        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/>
-        </svg>
-        <input type="password" id="pw-input" placeholder="••••••••" autocomplete="current-password" />
-      </div>
-      <div class="pw-error hidden" id="pw-error">パスワードが違います</div>
-      <button type="submit" class="btn-auth" id="btn-auth">
-        <span class="btn-text">ログイン</span>
-        <div class="spinner"></div>
-      </button>
-    </form>
-  </div>
-</div>
 
 <!-- ══ APP ══ -->
 <div id="app">
@@ -263,7 +273,6 @@
           <rect x="12" y="49" width="32" height="2.5" rx="1.25" fill="#E2E8F0" opacity="0.4"/>
           <rect x="12" y="56" width="18" height="2.5" rx="1.25" fill="#E2E8F0" opacity="0.3"/>
           <rect x="36" y="40" width="2" height="12" rx="1" fill="#FF7669" opacity="0.9"/>
-          <!-- Ctrl+V key hint -->
           <rect x="50" y="42" width="22" height="14" rx="3" fill="#096FCA" opacity="0.25"/>
           <text x="61" y="52" font-size="7" fill="#76B7ED" text-anchor="middle" font-family="monospace">Ctrl+V</text>
         </svg>
@@ -375,6 +384,10 @@
         <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="5 3 19 12 5 21 5 3"/></svg>
         CodePen で開く
       </button>
+      <button class="btn-share" onclick="openShareModal()">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
+        共有URLを作成
+      </button>
       <button class="btn-clear" onclick="clearAll()">クリア</button>
     </div>
   </div>
@@ -386,45 +399,58 @@
   <input type="hidden" name="data" id="cp-data" />
 </form>
 
+<!-- ══ SHARE MODAL ══ -->
+<div class="modal-overlay" id="share-modal" onclick="if(event.target===this)closeShareModal()">
+  <div class="modal">
+    <div class="modal-icon">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/>
+        <line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/>
+      </svg>
+    </div>
+    <h2>共有URLを作成</h2>
+    <p class="modal-desc">コード内容をURLに埋め込んで共有します。<br>パスワードを設定すると、開く時に入力が必要になります。</p>
+    <label for="share-pw">パスワード <span class="opt">（任意）</span></label>
+    <input type="password" id="share-pw" placeholder="設定しない場合は空欄でOK" autocomplete="new-password" />
+    <div class="modal-actions">
+      <button class="btn-modal-secondary" onclick="closeShareModal()">キャンセル</button>
+      <button class="btn-modal-primary" onclick="generateShareUrl()">URLを生成</button>
+    </div>
+    <div class="share-url-wrap" id="share-url-wrap">
+      <div class="share-url-box">
+        <div class="share-url-text" id="share-url-text"></div>
+        <button class="btn-copy" id="btn-copy" onclick="copyShareUrl()">コピー</button>
+      </div>
+      <div class="share-info" id="share-info"></div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ UNLOCK MODAL ══ -->
+<div class="modal-overlay" id="unlock-modal">
+  <div class="modal">
+    <div class="modal-icon" style="background: linear-gradient(135deg, #FF7669, #FFAAB3);">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+      </svg>
+    </div>
+    <h2>パスワードで保護されています</h2>
+    <p class="modal-desc">この共有URLを開くにはパスワードが必要です。</p>
+    <form onsubmit="unlockShare(event)">
+      <label for="unlock-pw">パスワード</label>
+      <input type="password" id="unlock-pw" placeholder="••••••••" autocomplete="current-password" autofocus />
+      <div class="modal-error hidden" id="unlock-error">パスワードが違います</div>
+      <div class="modal-actions">
+        <button type="submit" class="btn-modal-primary" style="flex: 1;">ロック解除</button>
+      </div>
+    </form>
+  </div>
+</div>
+
 <script>
-  /* ── AUTH ── */
-  const STORAGE_KEY = 'cp_auth';
-
-  async function checkPassword(e) {
-    e.preventDefault();
-    const btn = document.getElementById('btn-auth');
-    const input = document.getElementById('pw-input');
-    const errEl = document.getElementById('pw-error');
-    const pw = input.value.trim();
-    if (!pw) return;
-    btn.disabled = true; btn.classList.add('loading');
-    errEl.classList.add('hidden'); input.classList.remove('error');
-    try {
-      const res = await fetch('/api/check', {
-        method: 'POST', headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ password: pw }),
-      });
-      if (res.ok) { try { sessionStorage.setItem(STORAGE_KEY, pw); } catch {} showApp(); }
-      else { input.classList.add('error'); errEl.classList.remove('hidden'); input.value = ''; input.focus(); }
-    } catch { showApp(); }
-    finally { btn.disabled = false; btn.classList.remove('loading'); }
-  }
-
-  function showApp() {
-    document.getElementById('auth-overlay').style.display = 'none';
-    document.getElementById('app').classList.add('visible');
-  }
-
-  (async () => {
-    let saved; try { saved = sessionStorage.getItem(STORAGE_KEY); } catch {}
-    if (!saved) return;
-    try {
-      const res = await fetch('/api/check', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ password: saved }) });
-      if (res.ok) showApp(); else { try { sessionStorage.removeItem(STORAGE_KEY); } catch {} }
-    } catch { showApp(); }
-  })();
-
-  /* ── MAIN ── */
+  /* ══════════════════════════════════════════
+     MAIN
+  ══════════════════════════════════════════ */
   let parsed = { html: '', css: '', js: '' };
   let aaData = null;
 
@@ -432,8 +458,7 @@
     const raw = document.getElementById('bulk-textarea').value;
     parseCode(raw);
     const isAA = detectAA(raw);
-    if (isAA) { aaData = parseAASlide(raw); }
-    else { aaData = null; }
+    aaData = isAA ? parseAASlide(raw) : null;
     document.getElementById('slide-prompt').classList.toggle('visible', !!aaData);
   }
 
@@ -553,6 +578,171 @@ html,body{height:100%;background:#1E293B;display:flex;align-items:center;justify
     document.getElementById('preview-strip').classList.remove('visible');
     document.getElementById('slide-prompt').classList.remove('visible');
   }
+
+  /* ══════════════════════════════════════════
+     SHARE: 圧縮 + 暗号化 + URL生成
+  ══════════════════════════════════════════ */
+
+  /* base64url helpers */
+  function bytesToB64Url(bytes) {
+    let s = ''; bytes.forEach(b => s += String.fromCharCode(b));
+    return btoa(s).replace(/\+/g,'-').replace(/\//g,'_').replace(/=+$/,'');
+  }
+  function b64UrlToBytes(s) {
+    s = s.replace(/-/g,'+').replace(/_/g,'/');
+    while (s.length % 4) s += '=';
+    const bin = atob(s); const arr = new Uint8Array(bin.length);
+    for (let i = 0; i < bin.length; i++) arr[i] = bin.charCodeAt(i);
+    return arr;
+  }
+
+  /* gzip via CompressionStream (modern browsers) */
+  async function gzip(text) {
+    const stream = new Blob([text]).stream().pipeThrough(new CompressionStream('gzip'));
+    return new Uint8Array(await new Response(stream).arrayBuffer());
+  }
+  async function gunzip(bytes) {
+    const stream = new Blob([bytes]).stream().pipeThrough(new DecompressionStream('gzip'));
+    return new Response(stream).text();
+  }
+
+  /* AES-GCM via Web Crypto */
+  async function deriveKey(password, salt) {
+    const pwKey = await crypto.subtle.importKey(
+      'raw', new TextEncoder().encode(password),
+      'PBKDF2', false, ['deriveKey']
+    );
+    return crypto.subtle.deriveKey(
+      { name: 'PBKDF2', salt, iterations: 120000, hash: 'SHA-256' },
+      pwKey,
+      { name: 'AES-GCM', length: 256 },
+      false, ['encrypt', 'decrypt']
+    );
+  }
+
+  async function makeShareHash(text, password) {
+    const compressed = await gzip(text);
+    if (!password) {
+      return 'd=' + bytesToB64Url(compressed);
+    }
+    const salt = crypto.getRandomValues(new Uint8Array(16));
+    const iv = crypto.getRandomValues(new Uint8Array(12));
+    const key = await deriveKey(password, salt);
+    const ct = await crypto.subtle.encrypt({ name: 'AES-GCM', iv }, key, compressed);
+    const combined = new Uint8Array(salt.length + iv.length + ct.byteLength);
+    combined.set(salt, 0);
+    combined.set(iv, salt.length);
+    combined.set(new Uint8Array(ct), salt.length + iv.length);
+    return 'e=' + bytesToB64Url(combined);
+  }
+
+  async function readShareHash(hash, password) {
+    if (hash.startsWith('d=')) {
+      const data = b64UrlToBytes(hash.slice(2));
+      return gunzip(data);
+    }
+    if (hash.startsWith('e=')) {
+      const data = b64UrlToBytes(hash.slice(2));
+      const salt = data.slice(0, 16);
+      const iv = data.slice(16, 28);
+      const ct = data.slice(28);
+      const key = await deriveKey(password, salt);
+      const compressed = await crypto.subtle.decrypt({ name: 'AES-GCM', iv }, key, ct);
+      return gunzip(new Uint8Array(compressed));
+    }
+    throw new Error('Unknown hash format');
+  }
+
+  /* ── SHARE MODAL ── */
+  function openShareModal() {
+    const raw = document.getElementById('bulk-textarea').value;
+    if (!raw.trim()) { alert('共有するコードを入力してください。'); return; }
+    document.getElementById('share-pw').value = '';
+    document.getElementById('share-url-wrap').classList.remove('visible');
+    document.getElementById('share-modal').classList.add('visible');
+    setTimeout(() => document.getElementById('share-pw').focus(), 50);
+  }
+
+  function closeShareModal() {
+    document.getElementById('share-modal').classList.remove('visible');
+  }
+
+  async function generateShareUrl() {
+    const raw = document.getElementById('bulk-textarea').value;
+    if (!raw.trim()) return;
+    const pw = document.getElementById('share-pw').value;
+    try {
+      const hash = await makeShareHash(raw, pw);
+      const url = `${location.origin}${location.pathname}#${hash}`;
+      document.getElementById('share-url-text').textContent = url;
+      const info = document.getElementById('share-info');
+      const sizeKb = (url.length / 1024).toFixed(1);
+      info.innerHTML = pw
+        ? `<svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg> パスワード保護あり ／ ${sizeKb} KB`
+        : `<svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg> 誰でも開ける ／ ${sizeKb} KB`;
+      document.getElementById('share-url-wrap').classList.add('visible');
+    } catch (e) {
+      alert('URL生成に失敗しました: ' + e.message);
+    }
+  }
+
+  async function copyShareUrl() {
+    const url = document.getElementById('share-url-text').textContent;
+    try {
+      await navigator.clipboard.writeText(url);
+      const btn = document.getElementById('btn-copy');
+      btn.textContent = '✓ コピー済';
+      btn.classList.add('copied');
+      setTimeout(() => { btn.textContent = 'コピー'; btn.classList.remove('copied'); }, 1800);
+    } catch {
+      alert('コピーに失敗しました。手動で選択してください。');
+    }
+  }
+
+  /* ── UNLOCK MODAL ── */
+  let pendingHash = null;
+
+  async function unlockShare(e) {
+    e.preventDefault();
+    const pw = document.getElementById('unlock-pw').value;
+    const errEl = document.getElementById('unlock-error');
+    const input = document.getElementById('unlock-pw');
+    errEl.classList.add('hidden'); input.classList.remove('error');
+    if (!pw) return;
+    try {
+      const text = await readShareHash(pendingHash, pw);
+      document.getElementById('unlock-modal').classList.remove('visible');
+      document.getElementById('bulk-textarea').value = text;
+      onInput();
+      history.replaceState(null, '', location.pathname);
+    } catch {
+      input.classList.add('error');
+      errEl.classList.remove('hidden');
+      input.value = ''; input.focus();
+    }
+  }
+
+  /* ══════════════════════════════════════════
+     INIT: URL hashから自動展開
+  ══════════════════════════════════════════ */
+  (async () => {
+    const hash = location.hash.slice(1);
+    if (!hash) return;
+    if (hash.startsWith('e=')) {
+      pendingHash = hash;
+      document.getElementById('unlock-modal').classList.add('visible');
+      setTimeout(() => document.getElementById('unlock-pw').focus(), 50);
+    } else if (hash.startsWith('d=')) {
+      try {
+        const text = await readShareHash(hash);
+        document.getElementById('bulk-textarea').value = text;
+        onInput();
+        history.replaceState(null, '', location.pathname);
+      } catch (e) {
+        console.error('Failed to load shared content:', e);
+      }
+    }
+  })();
 </script>
 </body>
 </html>
